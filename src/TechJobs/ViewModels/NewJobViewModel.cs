@@ -14,10 +14,18 @@ namespace TechJobs.ViewModels
         [Required]
         [Display(Name = "Employer")]
         public int EmployerID { get; set; }
-        public string Employer { get; set; }
-        public string Location { get; set; }
-        public string CoreCompetency { get; set; }
-        public string PositionType { get; set; }
+        public Employer Employer { get; set; }
+
+ 
+        [Display(Name = "Location")]
+        public Location Location { get; set; }
+
+        [Display(Name = "Skill")]
+        public CoreCompetency CoreCompetency { get; set; }
+
+        [Display(Name = "Position Type")]
+        public PositionType PositionType { get; set; }
+
 
         public List<SelectListItem> Employers { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> Locations { get; set; } = new List<SelectListItem>();
