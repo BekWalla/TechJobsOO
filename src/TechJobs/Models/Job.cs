@@ -1,4 +1,5 @@
-﻿namespace TechJobs.Models
+﻿using System.Linq;
+namespace TechJobs.Models
 {
     public class Job
     {

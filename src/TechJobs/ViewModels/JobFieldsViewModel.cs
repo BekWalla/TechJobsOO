@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TechJobs.Models;
+using System.Linq;
 
 namespace TechJobs.ViewModels
 {
