@@ -12,8 +12,6 @@ namespace TechJobs.Controllers
         // Our reference to the data store
         private static JobData jobData;
 
-
-
         static JobController()
         {
             jobData = JobData.GetInstance();
@@ -37,16 +35,21 @@ namespace TechJobs.Controllers
         public IActionResult New(NewJobViewModel newJobViewModel)
         {
             if (ModelState.IsValid)
-                {
+            {
+                Employer employer = jobData.Employers.Find(newJobViewModel.EmployerID);
+                Location location = jobData.Locations.Find(newJobViewModel.LocationID);
+                CoreCompetency skill = jobData.CoreCompetencies.Find(newJobViewModel.SkillID);
+                PositionType type = jobData.PositionTypes.Find(newJobViewModel.PositionTypeID);
                 Job newJob = new Job
                 {
                     Name = newJobViewModel.Name,
-                    Employer= newJobViewModel.Employer,
-                    CoreCompetency = newJobViewModel.CoreCompetency,
-                    Location = newJobViewModel.Location,
-                    PositionType = newJobViewModel.PositionType
+                    Employer = employer,
+                    CoreCompetency = skill,
+                    Location = location,
+                    PositionType = type,
                 };
                 jobData.Jobs.Add(newJob);
+                int id = newJob.ID;
                 return Redirect("/Job?id=newJob.ID");
             }
             return View(newJobViewModel);

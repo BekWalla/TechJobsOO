@@ -14,17 +14,18 @@ namespace TechJobs.ViewModels
         [Required]
         [Display(Name = "Employer")]
         public int EmployerID { get; set; }
-        public Employer Employer { get; set; }
 
- 
+        [Required]
         [Display(Name = "Location")]
-        public Location Location { get; set; }
+        public int LocationID { get; set; }
 
+        [Required]
         [Display(Name = "Skill")]
-        public CoreCompetency CoreCompetency { get; set; }
+        public int SkillID { get; set; }
 
+        [Required]
         [Display(Name = "Position Type")]
-        public PositionType PositionType { get; set; }
+        public int PositionTypeID { get; set; }
 
 
         public List<SelectListItem> Employers { get; set; } = new List<SelectListItem>();
@@ -39,7 +40,8 @@ namespace TechJobs.ViewModels
 
             foreach (Employer field in jobData.Employers.ToList())
             {
-                Employers.Add(new SelectListItem {
+                Employers.Add(new SelectListItem
+                {
                     Value = field.ID.ToString(),
                     Text = field.Value
                 });
